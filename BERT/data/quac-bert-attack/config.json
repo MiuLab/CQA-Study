@@ -1,0 +1,10 @@
+{
+    "train_json_path": "../../data/quac/train_v0.2.json",
+    "valid_json_path": "../../data/quac/val_v0.2-attack.json",
+    "oov_as_unk": true,
+    "train_pkl_path": "../data/quac-bert-attack/train.pkl",
+    "valid_pkl_path": "../data/quac-bert-attack/valid.pkl",
+    "context_truncated_len": 3000,
+    "utterance_truncated_len": 100,
+    "bert": true
+}

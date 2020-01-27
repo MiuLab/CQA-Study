@@ -1,0 +1,9 @@
+{
+    "train_json_path": "../../data/quac/train_v0.2.json",
+    "valid_json_path": "../../data/quac/val_v0.2.json",
+    "train_pkl_path": "../data/quac-bert/train.pkl",
+    "valid_pkl_path": "../data/quac-bert/valid.pkl",
+    "context_truncated_len": 3000,
+    "utterance_truncated_len": 100,
+    "bert": true
+}
