@@ -93,3 +93,32 @@ cd FlowQA
 bash predict-coqa.sh
 bash predict-quac.sh
 ```
+
+
+## SDNet Experiments
+
+### Preparation
+
+```
+TBD
+```
+
+
+### Train & Predict & Calculate Score
+
+To train:
+
+```
+TBD
+```
+
+To predict:
+
+```
+TBD
+```
+
+To calculate score:
+```
+TBD
+```
