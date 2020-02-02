@@ -2,6 +2,10 @@
 
 This is the repository for the AAAI 2020 paper [An Empirical Study of Content Understanding in Conversational Question Answering](https://arxiv.org/abs/1909.10743).
 
+<p align="center">
+  <img src="./poster.png" width=50% >
+</p>
+
 ## Get Dataset
 
 To get the original CoQA/QuAC dataset and the attacked CoQA/QuAC dataset, run
