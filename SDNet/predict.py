@@ -23,6 +23,9 @@ def parse_args():
     parser.add_argument(
         '-i','--indicator', type=int, default=0, help='Position indicator of prev ans')
     parser.add_argument(
+        '-a','--answer-span-in-context', action='store_true',
+        help='Use answer span in context feature')
+    parser.add_argument(
         '-n','--no-ans-bit', action='store_true',
         help='Do not use prev ans bit feature')
     args = parser.parse_args()
@@ -30,7 +33,7 @@ def parse_args():
     return vars(args)
 
 
-def main(conf_file, model_file, data_file, output_path, mask, indicator, no_ans_bit):
+def main(conf_file, model_file, data_file, output_path, mask, indicator, answer_span_in_context, no_ans_bit):
     conf_args = Arguments(conf_file)
     opt = conf_args.readArguments()
     opt['cuda'] = torch.cuda.is_available()
@@ -41,6 +44,8 @@ def main(conf_file, model_file, data_file, output_path, mask, indicator, no_ans_
 
     opt['OFFICIAL'] = True
     opt['OFFICIAL_TEST_FILE'] = data_file
+    if answer_span_in_context:
+        opt['ANSWER_SPAN_IN_CONTEXT_FEATURE'] = None
     if no_ans_bit:
         opt['NO_PREV_ANS_BIT'] = None
     trainer = SDNetTrainer(opt)
@@ -48,8 +53,6 @@ def main(conf_file, model_file, data_file, output_path, mask, indicator, no_ans_
     predictions, confidence, final_json = trainer.official(model_file, test_data)
     with output_path.open(mode='w') as f:
         json.dump(final_json, f)
-    with open('./output.pkl', mode='wb') as f:
-        pickle.dump({'predictions': predictions, 'confidence': confidence}, f)
 
 
 if __name__ == "__main__":

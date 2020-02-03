@@ -2,6 +2,10 @@
 
 This is the repository for the AAAI 2020 paper [An Empirical Study of Content Understanding in Conversational Question Answering](https://arxiv.org/abs/1909.10743).
 
+<p align="center">
+  <img src="./poster.png" width=50% >
+</p>
+
 ## Get Dataset
 
 To get the original CoQA/QuAC dataset and the attacked CoQA/QuAC dataset, run
@@ -23,6 +27,15 @@ Or one can simply use the scripts to apply the attacked dataset:
 python3 scripts/attack_quac.py [input path] [output path]
 python3 scripts/attack_coqa.py [input path] [output path]
 ```
+
+### Prepare GloVe
+
+```
+mkdir glove
+wget http://nlp.stanford.edu/data/glove.840B.300d.zip -O glove/glove.840B.300d.zip
+unzip glove/glove.840B.300d.zip -d glove
+```
+
 
 ## BERT Experiments
 
@@ -60,15 +73,6 @@ bash score.sh
 
 ## FlowQA Experiments
 
-### Prepare GloVe
-
-```
-mkdir glove
-wget http://nlp.stanford.edu/data/glove.840B.300d.zip -O glove/glove.840B.300d.zip
-unzip glove/glove.840B.300d.zip -d glove
-```
-
-
 ### Prepreocess
 
 ```
@@ -97,28 +101,34 @@ bash predict-quac.sh
 
 ## SDNet Experiments
 
+SDNet training/model code is modified from the [official repo](https://github.com/microsoft/SDNet).
+
 ### Preparation
 
+Download BERT model from [here](https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased.tar.gz), extract it and move it under *SDNet/bert-base-cased*.
 ```
-TBD
+wget https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased.tar.gz
+tar -zxvf bert-base-cased.tar.gz -C SDNet/bert-base-cased
 ```
+
 
 
 ### Train & Predict & Calculate Score
 
 To train:
-
 ```
-TBD
+cd SDNet/
+bash train.sh
 ```
 
 To predict:
-
 ```
-TBD
+cd SDNet/
+bash predict.sh
 ```
 
 To calculate score:
 ```
-TBD
+cd SDNet/
+bash score.sh
 ```
